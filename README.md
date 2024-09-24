@@ -11,5 +11,7 @@ Play now at [harmonyhoney.itch.io/tinycrate](https://harmonyhoney.itch.io/tinycr
 ## License
 This is free and unencumbered software!
 
-## Screen shots
+## Screenshots
+# ![image](ScreenShot_1.png)
+# ![image](ScreenShot_2.png)
 # ![image](ScreenShot_3.png)
