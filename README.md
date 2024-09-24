@@ -1,7 +1,7 @@
 # Tiny-Crate-Vita
 Tiny Crate Vita is a port of the original game made by HarmonyHoney
 
-# ![icon](media/image/icon.png) Tiny Crate
+# ![icon](icon.png) Tiny Crate
 Made with Godot 3.6
 
 Precision Puzzle Platformer Game
