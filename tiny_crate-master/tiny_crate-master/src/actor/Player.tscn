@@ -1,0 +1,188 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/actor/Player.gd" type="Script" id=1]
+[ext_resource path="res://media/audio/sfx/player_jump.wav" type="AudioStream" id=2]
+[ext_resource path="res://media/image/player_swap.png" type="Texture" id=3]
+[ext_resource path="res://media/audio/sfx/btn3.wav" type="AudioStream" id=4]
+[ext_resource path="res://media/audio/sfx/sfx10.wav" type="AudioStream" id=5]
+[ext_resource path="res://media/audio/sfx/box_drop.wav" type="AudioStream" id=6]
+[ext_resource path="res://media/audio/sfx/push.wav" type="AudioStream" id=7]
+[ext_resource path="res://src/shader/player_palette_swap.gdshader" type="Shader" id=8]
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 8 )
+shader_param/hat = Color( 1, 0, 0, 1 )
+shader_param/eye = Color( 0, 1, 0, 1 )
+shader_param/skin = Color( 0, 0, 1, 1 )
+shader_param/suit = Color( 1, 1, 0, 1 )
+shader_param/shoe = Color( 1, 0, 1, 1 )
+shader_param/hat_swap = Color( 1, 0.92549, 0.152941, 1 )
+shader_param/eye_swap = Color( 1, 0.8, 0.666667, 1 )
+shader_param/skin_swap = Color( 0.670588, 0.321569, 0.211765, 1 )
+shader_param/suit_swap = Color( 0.160784, 0.678431, 1, 1 )
+shader_param/shoe_swap = Color( 1, 0.8, 0.666667, 1 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "anim_frame"
+}, {
+"args": [  ],
+"method": "anim_frame"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "anim_frame"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 3, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "anim_frame"
+}, {
+"args": [  ],
+"method": "anim_frame"
+}, {
+"args": [  ],
+"method": "anim_frame"
+}, {
+"args": [  ],
+"method": "anim_frame"
+} ]
+}
+
+[node name="Player" type="Node2D"]
+z_index = 15
+z_as_relative = false
+script = ExtResource( 1 )
+tag = "player"
+is_solid = true
+is_moving = true
+is_colliding = true
+is_using_gravity = true
+move_speed = 0.9
+jump_speed = 1.4
+jump_frames = 16
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 9 )
+position = Vector2( 4, 0 )
+texture = ExtResource( 3 )
+hframes = 7
+vframes = 2
+region_rect = Rect2( 40, 0, 8, 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/RESET = SubResource( 7 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/run = SubResource( 6 )
+
+[node name="AudioJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+attenuation = 0.101532
+bus = "SFX"
+
+[node name="AudioPickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="AudioDrop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="AudioThrow" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="AudioPush" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX"

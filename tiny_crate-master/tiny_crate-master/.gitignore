@@ -1,0 +1,7 @@
+# import and export
+.import/
+*.import
+[Ee]xport/*/
+*_[Mm]ac.zip
+[Aa]ndroid/
+silent_wolf_api_key.gd

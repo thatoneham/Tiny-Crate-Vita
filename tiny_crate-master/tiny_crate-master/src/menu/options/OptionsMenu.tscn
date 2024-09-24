@@ -1,0 +1,349 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/menu/options/OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://src/menu/options/Volume.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/menu/options/OpenKeyMenu.gd" type="Script" id=3]
+[ext_resource path="res://src/menu/Blink.gd" type="Script" id=4]
+[ext_resource path="res://media/audio/sfx/btn0.wav" type="AudioStream" id=5]
+[ext_resource path="res://media/font/QuinqueFive.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://media/font/ThaleahFat.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://src/menu/options/Borderless.gd" type="Script" id=8]
+[ext_resource path="res://src/menu/options/Fullscreen.gd" type="Script" id=20]
+[ext_resource path="res://src/menu/options/WindowSize.gd" type="Script" id=21]
+[ext_resource path="res://src/menu/options/Touch.gd" type="Script" id=22]
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+extra_spacing_top = -11
+extra_spacing_bottom = -12
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 5
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -1
+extra_spacing_bottom = -1
+font_data = ExtResource( 6 )
+
+[node name="OptionsMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+parent_path = NodePath(".")
+list_path = NodePath("Center/Control/MenuItems")
+cursor_path = NodePath("Center/Control/Cursor")
+cursor_expand = Vector2( 4, 4 )
+is_audio_scroll = true
+is_audio_back = true
+is_close_btn_no = true
+
+[node name="Back" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0.5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="Center"]
+margin_right = 228.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 228, 128 )
+
+[node name="Cursor" type="ColorRect" parent="Center/Control"]
+modulate = Color( 0, 0, 1, 1 )
+margin_left = 56.0
+margin_top = 23.0
+margin_right = 200.0
+margin_bottom = 35.0
+script = ExtResource( 4 )
+color_blink = PoolColorArray( 0, 0, 1, 1, 0, 0.482353, 1, 1 )
+
+[node name="Header" type="Label" parent="Center/Control"]
+margin_top = 7.0
+margin_right = 228.0
+margin_bottom = 20.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 4 )
+text = "OPTIONS"
+align = 1
+
+[node name="MenuItems" type="VBoxContainer" parent="Center/Control"]
+margin_left = 58.0
+margin_top = 21.0
+margin_right = 174.0
+margin_bottom = 113.0
+alignment = 1
+
+[node name="Keyboard" type="HBoxContainer" parent="Center/Control/MenuItems"]
+margin_right = 116.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 0, 8 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Center/Control/MenuItems/Keyboard"]
+margin_top = 1.0
+margin_right = 84.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "Keyboard Setup"
+
+[node name="Spacer" type="Control" parent="Center/Control/MenuItems/Keyboard"]
+margin_left = 88.0
+margin_right = 104.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="Spacer2" type="Control" parent="Center/Control/MenuItems/Keyboard"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="Gamepad" type="HBoxContainer" parent="Center/Control/MenuItems"]
+margin_top = 12.0
+margin_right = 116.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 8 )
+script = ExtResource( 3 )
+is_gamepad = true
+
+[node name="Label" type="Label" parent="Center/Control/MenuItems/Gamepad"]
+margin_top = 1.0
+margin_right = 78.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "gamepad Setup"
+
+[node name="Spacer" type="Control" parent="Center/Control/MenuItems/Gamepad"]
+margin_left = 82.0
+margin_right = 104.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="Spacer2" type="Control" parent="Center/Control/MenuItems/Gamepad"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="Sounds" parent="Center/Control/MenuItems" instance=ExtResource( 2 )]
+margin_top = 24.0
+margin_right = 116.0
+margin_bottom = 32.0
+
+[node name="Music" parent="Center/Control/MenuItems" instance=ExtResource( 2 )]
+margin_top = 36.0
+margin_right = 116.0
+margin_bottom = 44.0
+bus = 2
+
+[node name="Label" parent="Center/Control/MenuItems/Music" index="0"]
+margin_right = 30.0
+text = "Music"
+
+[node name="Spacer" parent="Center/Control/MenuItems/Music" index="1"]
+margin_left = 32.0
+margin_right = 65.0
+
+[node name="Arrow" parent="Center/Control/MenuItems/Music" index="2"]
+margin_left = 67.0
+margin_right = 70.0
+
+[node name="Meter" parent="Center/Control/MenuItems/Music" index="3"]
+margin_left = 72.0
+margin_right = 111.0
+
+[node name="Arrow2" parent="Center/Control/MenuItems/Music" index="4"]
+margin_left = 113.0
+margin_right = 116.0
+
+[node name="AudioStreamPlayer" parent="Center/Control/MenuItems/Music" index="5"]
+stream = ExtResource( 5 )
+bus = "Music"
+
+[node name="Fullscreen" type="HBoxContainer" parent="Center/Control/MenuItems"]
+margin_top = 48.0
+margin_right = 116.0
+margin_bottom = 56.0
+script = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="Center/Control/MenuItems/Fullscreen"]
+margin_top = 1.0
+margin_right = 60.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer" type="Control" parent="Center/Control/MenuItems/Fullscreen"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="Box" type="ColorRect" parent="Center/Control/MenuItems/Fullscreen"]
+margin_left = 96.0
+margin_right = 104.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Back" type="ColorRect" parent="Center/Control/MenuItems/Fullscreen/Box"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 7.0
+margin_bottom = 7.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fill" type="ColorRect" parent="Center/Control/MenuItems/Fullscreen/Box"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="Center/Control/MenuItems/Fullscreen"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="WindowSize" type="HBoxContainer" parent="Center/Control/MenuItems"]
+margin_top = 60.0
+margin_right = 116.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 8 )
+script = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Center/Control/MenuItems/WindowSize"]
+margin_top = 1.0
+margin_right = 36.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "Window"
+
+[node name="Scale" type="Label" parent="Center/Control/MenuItems/WindowSize"]
+margin_left = 40.0
+margin_top = 1.0
+margin_right = 58.0
+margin_bottom = 6.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "1x"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resolution" type="Label" parent="Center/Control/MenuItems/WindowSize"]
+margin_left = 62.0
+margin_top = 1.0
+margin_right = 116.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "228 x 128"
+align = 1
+
+[node name="Borderless" type="HBoxContainer" parent="Center/Control/MenuItems"]
+margin_top = 72.0
+margin_right = 116.0
+margin_bottom = 80.0
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Center/Control/MenuItems/Borderless"]
+margin_top = 1.0
+margin_right = 60.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "Borderless"
+
+[node name="Spacer" type="Control" parent="Center/Control/MenuItems/Borderless"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="Box" type="ColorRect" parent="Center/Control/MenuItems/Borderless"]
+margin_left = 96.0
+margin_right = 104.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Back" type="ColorRect" parent="Center/Control/MenuItems/Borderless/Box"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 7.0
+margin_bottom = 7.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fill" type="ColorRect" parent="Center/Control/MenuItems/Borderless/Box"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="Center/Control/MenuItems/Borderless"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 0 )
+
+[node name="TouchControls" type="HBoxContainer" parent="Center/Control/MenuItems"]
+margin_top = 84.0
+margin_right = 116.0
+margin_bottom = 92.0
+script = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="Center/Control/MenuItems/TouchControls"]
+margin_top = 1.0
+margin_right = 84.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "Touch Controls"
+
+[node name="Spacer" type="Control" parent="Center/Control/MenuItems/TouchControls"]
+margin_left = 88.0
+margin_right = 92.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="Box" type="ColorRect" parent="Center/Control/MenuItems/TouchControls"]
+margin_left = 96.0
+margin_right = 104.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Back" type="ColorRect" parent="Center/Control/MenuItems/TouchControls/Box"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 7.0
+margin_bottom = 7.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fill" type="ColorRect" parent="Center/Control/MenuItems/TouchControls/Box"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 6.0
+margin_bottom = 6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer2" type="Control" parent="Center/Control/MenuItems/TouchControls"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 0 )
+
+[editable path="Center/Control/MenuItems/Music"]

@@ -1,0 +1,392 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://media/font/QuinqueFive.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://media/image/diamond12.png" type="Texture" id=2]
+[ext_resource path="res://src/autoload/UI.gd" type="Script" id=3]
+[ext_resource path="res://media/image/note.png" type="Texture" id=4]
+[ext_resource path="res://media/font/m6x11.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/shader/outline2D_outer.shader" type="Shader" id=6]
+[ext_resource path="res://src/menu/options/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://media/image/skull.png" type="Texture" id=8]
+[ext_resource path="res://media/image/menu.png" type="Texture" id=9]
+[ext_resource path="res://media/image/diamond8.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=3]
+size = 5
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -1
+extra_spacing_bottom = -1
+font_data = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 6 )
+shader_param/line_color = Color( 0, 0, 0, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="DynamicFont" id=8]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -3
+extra_spacing_char = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 6 )
+shader_param/line_color = Color( 0, 0, 0, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="DynamicFont" id=12]
+size = 5
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -1
+extra_spacing_bottom = -1
+extra_spacing_char = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 6 )
+shader_param/line_color = Color( 0, 0, 0, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="DynamicFont" id=10]
+size = 5
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -1
+extra_spacing_bottom = -1
+extra_spacing_char = 1
+font_data = ExtResource( 1 )
+
+[node name="UI" type="CanvasLayer"]
+pause_mode = 2
+layer = 5
+script = ExtResource( 3 )
+pos_left = 60
+pos_right = 184
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="Center"]
+margin_right = 228.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 228, 128 )
+
+[node name="Bottom" type="GridContainer" parent="Center/Control"]
+margin_left = 5.0
+margin_top = 83.0
+margin_right = 223.0
+margin_bottom = 121.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 2
+columns = 3
+
+[node name="Arrows" type="HBoxContainer" parent="Center/Control/Bottom"]
+margin_top = 31.0
+margin_right = 50.0
+margin_bottom = 38.0
+size_flags_vertical = 10
+custom_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/Control/Bottom/Arrows"]
+margin_right = 23.0
+margin_bottom = 7.0
+custom_constants/separation = 1
+
+[node name="Key" parent="Center/Control/Bottom/Arrows/HBoxContainer" instance=ExtResource( 7 )]
+action = "ui_left"
+is_connect = true
+
+[node name="Key4" parent="Center/Control/Bottom/Arrows/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 8.0
+margin_right = 15.0
+action = "ui_down"
+text = "down"
+is_connect = true
+
+[node name="Key3" parent="Center/Control/Bottom/Arrows/HBoxContainer/Key4" instance=ExtResource( 7 )]
+margin_top = -8.0
+margin_bottom = -1.0
+action = "ui_up"
+text = "up"
+is_connect = true
+
+[node name="Key2" parent="Center/Control/Bottom/Arrows/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 16.0
+margin_right = 23.0
+action = "ui_right"
+text = "right"
+is_connect = true
+
+[node name="Desc" type="Label" parent="Center/Control/Bottom/Arrows"]
+margin_left = 26.0
+margin_top = 1.0
+margin_right = 50.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "move"
+
+[node name="Spacer" type="Control" parent="Center/Control/Bottom"]
+margin_left = 52.0
+margin_right = 158.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+
+[node name="Keys" type="VBoxContainer" parent="Center/Control/Bottom"]
+margin_left = 160.0
+margin_top = 11.0
+margin_right = 218.0
+margin_bottom = 38.0
+size_flags_vertical = 10
+custom_constants/separation = 3
+alignment = 2
+
+[node name="X" type="HBoxContainer" parent="Center/Control/Bottom/Keys"]
+margin_left = 24.0
+margin_right = 58.0
+margin_bottom = 7.0
+size_flags_horizontal = 10
+custom_constants/separation = 3
+
+[node name="Key" parent="Center/Control/Bottom/Keys/X" instance=ExtResource( 7 )]
+action = "ui_yes"
+text = "x"
+is_connect = true
+
+[node name="Desc" type="Label" parent="Center/Control/Bottom/Keys/X"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 34.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "pick"
+
+[node name="C" type="HBoxContainer" parent="Center/Control/Bottom/Keys"]
+margin_left = 18.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( -248, -67 )
+size_flags_horizontal = 10
+custom_constants/separation = 3
+
+[node name="Key" parent="Center/Control/Bottom/Keys/C" instance=ExtResource( 7 )]
+action = "ui_no"
+text = "c"
+is_connect = true
+
+[node name="Desc" type="Label" parent="Center/Control/Bottom/Keys/C"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 40.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "erase"
+
+[node name="V" type="HBoxContainer" parent="Center/Control/Bottom/Keys"]
+margin_top = 20.0
+margin_right = 58.0
+margin_bottom = 27.0
+rect_pivot_offset = Vector2( -248, -67 )
+size_flags_horizontal = 10
+custom_constants/separation = 3
+
+[node name="Key" parent="Center/Control/Bottom/Keys/V" instance=ExtResource( 7 )]
+margin_right = 19.0
+rect_min_size = Vector2( 19, 7 )
+action = "ui_del"
+text = "del"
+is_connect = true
+
+[node name="Desc" type="Label" parent="Center/Control/Bottom/Keys/V"]
+margin_left = 22.0
+margin_top = 1.0
+margin_right = 58.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "unbind"
+
+[node name="Top" type="HBoxContainer" parent="Center/Control"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 223.0
+margin_bottom = 17.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="P" type="HBoxContainer" parent="Center/Control/Top"]
+margin_left = 160.0
+margin_right = 218.0
+margin_bottom = 12.0
+custom_constants/separation = 3
+
+[node name="Key" parent="Center/Control/Top/P" instance=ExtResource( 7 )]
+margin_top = 2.0
+margin_right = 31.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 31, 7 )
+action = "ui_pause"
+text = "enter"
+is_connect = true
+
+[node name="Desc" type="Label" parent="Center/Control/Top/P"]
+margin_left = 34.0
+margin_top = 3.0
+margin_right = 58.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 3 )
+text = "menu"
+
+[node name="Info" type="Control" parent="Center"]
+margin_right = 228.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 228, 128 )
+
+[node name="Map" type="Control" parent="Center/Info"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Notes" type="Control" parent="Center/Info/Map"]
+margin_left = 1.0
+margin_top = 19.0
+margin_right = 1.0
+margin_bottom = 19.0
+
+[node name="Control" type="Control" parent="Center/Info/Map/Notes"]
+margin_top = -2.0
+margin_right = 16.0
+margin_bottom = 14.0
+
+[node name="Sprite" type="Sprite" parent="Center/Info/Map/Notes/Control"]
+material = SubResource( 6 )
+position = Vector2( 8, 8 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Center/Info/Map/Notes"]
+margin_left = 17.0
+margin_right = 78.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 8 )
+text = "13"
+valign = 1
+
+[node name="Gems" type="Control" parent="Center/Info/Map"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1.0
+margin_bottom = 1.0
+
+[node name="Control" type="Control" parent="Center/Info/Map/Gems"]
+margin_right = 16.0
+margin_bottom = 16.0
+
+[node name="Sprite" type="Sprite" parent="Center/Info/Map/Gems/Control"]
+modulate = Color( 1, 0.92549, 0.152941, 1 )
+material = SubResource( 6 )
+position = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Center/Info/Map/Gems"]
+margin_left = 17.0
+margin_top = 3.0
+margin_right = 78.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "37"
+valign = 1
+
+[node name="Stats" type="VBoxContainer" parent="Center/Info"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 222.0
+margin_bottom = 34.0
+custom_constants/separation = 0
+
+[node name="Time" type="HBoxContainer" parent="Center/Info/Stats"]
+margin_right = 46.0
+margin_bottom = 10.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 2
+
+[node name="Image" type="Control" parent="Center/Info/Stats/Time"]
+margin_right = 10.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+
+[node name="Sprite" type="Sprite" parent="Center/Info/Stats/Time/Image"]
+modulate = Color( 1, 0.92549, 0.152941, 1 )
+material = SubResource( 11 )
+position = Vector2( 5, 5 )
+texture = ExtResource( 10 )
+region_rect = Rect2( 15, 7, 10, 10 )
+
+[node name="Label" type="Label" parent="Center/Info/Stats/Time"]
+margin_left = 12.0
+margin_top = 2.0
+margin_right = 46.0
+margin_bottom = 7.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 12 )
+text = "56.81"
+
+[node name="Note" type="HBoxContainer" parent="Center/Info/Stats"]
+margin_top = 10.0
+margin_right = 46.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 2
+
+[node name="Image" type="Control" parent="Center/Info/Stats/Note"]
+margin_right = 10.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+
+[node name="Sprite" type="Sprite" parent="Center/Info/Stats/Note/Image"]
+material = SubResource( 11 )
+position = Vector2( 6, 5 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 7, 7, 9, 10 )
+
+[node name="Label" type="Label" parent="Center/Info/Stats/Note"]
+margin_left = 12.0
+margin_top = 2.0
+margin_right = 46.0
+margin_bottom = 7.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 12 )
+text = "30:74"
+
+[node name="Die" type="HBoxContainer" parent="Center/Info/Stats"]
+margin_top = 20.0
+margin_right = 25.0
+margin_bottom = 30.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 2
+
+[node name="Image" type="Control" parent="Center/Info/Stats/Die"]
+margin_right = 10.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+
+[node name="Sprite" type="Sprite" parent="Center/Info/Stats/Die/Image"]
+material = SubResource( 9 )
+position = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+region_rect = Rect2( 15, 7, 10, 10 )
+
+[node name="Label" type="Label" parent="Center/Info/Stats/Die"]
+margin_left = 12.0
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 7.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 10 )
+text = "79"

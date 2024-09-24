@@ -1,0 +1,1357 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://media/image/player_swap.png" type="Texture" id=2]
+[ext_resource path="res://src/stage/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/stage/DetailTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://media/image/tinyArrow.png" type="Texture" id=5]
+[ext_resource path="res://media/image/creator.png" type="Texture" id=6]
+[ext_resource path="res://media/font/QuinqueFive.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://src/menu/Creator.gd" type="Script" id=8]
+[ext_resource path="res://media/font/ThaleahFat.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://media/image/crate_tiles.png" type="Texture" id=10]
+[ext_resource path="res://media/image/bricks.png" type="Texture" id=11]
+[ext_resource path="res://media/image/solid_bricks.png" type="Texture" id=12]
+[ext_resource path="res://media/image/8pixel.png" type="Texture" id=13]
+[ext_resource path="res://src/menu/Blink.gd" type="Script" id=14]
+[ext_resource path="res://src/stage/Stage.gd" type="Script" id=15]
+
+[sub_resource type="TileSet" id=21]
+0/name = "solid_bricks.png 0"
+0/texture = ExtResource( 12 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 0.760784, 0.764706, 0.780392, 1 )
+0/region = Rect2( 0, 0, 16, 8 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 8, 8 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "8pixel.png 1"
+1/texture = ExtResource( 13 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 0, 1, 0.33 )
+1/region = Rect2( 0, 0, 8, 8 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=22]
+4/name = "bricks.png 4"
+4/texture = ExtResource( 11 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 0.372549, 0.341176, 0.309804, 1 )
+4/region = Rect2( 0, 0, 40, 8 )
+4/tile_mode = 2
+4/autotile/icon_coordinate = Vector2( 0, 0 )
+4/autotile/tile_size = Vector2( 8, 8 )
+4/autotile/spacing = 0
+4/autotile/occluder_map = [  ]
+4/autotile/navpoly_map = [  ]
+4/autotile/priority_map = [  ]
+4/autotile/z_index_map = [  ]
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "crate_tiles.png 5"
+5/texture = ExtResource( 10 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 0, 0.529412, 0.317647, 1 )
+5/region = Rect2( 0, 16, 24, 8 )
+5/tile_mode = 2
+5/autotile/icon_coordinate = Vector2( 0, 0 )
+5/autotile/tile_size = Vector2( 8, 8 )
+5/autotile/spacing = 0
+5/autotile/occluder_map = [  ]
+5/autotile/navpoly_map = [  ]
+5/autotile/priority_map = [  ]
+5/autotile/z_index_map = [  ]
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "crate_tiles.png 6"
+6/texture = ExtResource( 10 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 0.678431, 0, 0.156863, 1 )
+6/region = Rect2( 0, 24, 8, 8 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+
+[sub_resource type="Shader" id=20]
+code = "shader_type canvas_item;
+
+uniform vec4 hat : hint_color = vec4(0.0);
+uniform vec4 eye : hint_color = vec4(0.0);
+uniform vec4 skin : hint_color = vec4(0.0);
+uniform vec4 suit : hint_color = vec4(0.0);
+uniform vec4 shoe : hint_color = vec4(0.0);
+
+uniform vec4 hat_swap : hint_color = vec4(0.0);
+uniform vec4 eye_swap : hint_color = vec4(0.0);
+uniform vec4 skin_swap : hint_color = vec4(0.0);
+uniform vec4 suit_swap : hint_color = vec4(0.0);
+uniform vec4 shoe_swap : hint_color = vec4(0.0);
+
+
+void fragment(){
+	vec4 col = texture(TEXTURE, UV);
+	
+	if (col == hat){
+		col = hat_swap;
+	}
+	else if (col == eye){
+		col = eye_swap;
+	}
+	else if (col == skin){
+		col = skin_swap;
+	}
+	else if (col == suit){
+		col = suit_swap;
+	}
+	else if (col == shoe){
+		col = shoe_swap;
+	}
+	
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 20 )
+shader_param/hat = Color( 1, 0, 0, 1 )
+shader_param/eye = Color( 0, 1, 0, 1 )
+shader_param/skin = Color( 0, 0, 1, 1 )
+shader_param/suit = Color( 1, 1, 0, 1 )
+shader_param/shoe = Color( 1, 0, 1, 1 )
+shader_param/hat_swap = Color( 1, 0.92549, 0.152941, 1 )
+shader_param/eye_swap = Color( 1, 0.8, 0.666667, 1 )
+shader_param/skin_swap = Color( 0.670588, 0.321569, 0.211765, 1 )
+shader_param/suit_swap = Color( 0.160784, 0.678431, 1, 1 )
+shader_param/shoe_swap = Color( 1, 0.8, 0.666667, 1 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 4, 0 ]
+}
+
+[sub_resource type="DynamicFont" id=16]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -6
+extra_spacing_bottom = -12
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 5
+font_data = ExtResource( 7 )
+
+[node name="Creator" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Stage" type="Node2D" parent="."]
+script = ExtResource( 15 )
+is_random = true
+
+[node name="SolidTileMap" parent="Stage" instance=ExtResource( 1 )]
+tile_set = SubResource( 21 )
+tile_data = PoolIntArray( 458729, 0, 1, 458730, 0, 1, 458731, 0, 1, 458732, 0, 1, 458733, 536870912, 0, 458734, 0, 1, 458735, 0, 0, 458736, 0, 1, 458737, 536870912, 0, 458738, 536870912, 1, 524274, 0, 0, 589810, 536870912, 1, 655346, 536870912, 0 )
+
+[node name="DetailTileMap" parent="Stage" instance=ExtResource( 4 )]
+z_index = -11
+tile_set = SubResource( 22 )
+tile_data = PoolIntArray( 65516, 5, 0, 65517, 5, 0, 65518, 5, 0, 65519, 5, 0, 65520, 5, 0, 131052, 5, 0, 131053, 5, 0, 131054, 5, 0, 131055, 5, 0, 131056, 5, 0, 196588, 1073741829, 2, 196589, 5, 0, 196590, 5, 0, 196591, 5, 0, 196592, 1610612741, 2, 262125, 1073741829, 2, 262126, 5, 0, 262127, 1610612741, 2, 327662, 6, 0, 393198, 6, 0, 524273, 1073741829, 2, 524275, -1610612731, 2, 589811, -1610612731, 0, 655347, -1610612731, 0 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+position = Vector2( -92, 48 )
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( -120, 40 )
+z_index = 15
+z_as_relative = false
+
+[node name="Sprite" type="Sprite" parent="Player"]
+material = SubResource( 17 )
+position = Vector2( 4, 0 )
+texture = ExtResource( 2 )
+hframes = 7
+vframes = 2
+region_rect = Rect2( 40, 0, 8, 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+autoplay = "idle"
+anims/RESET = SubResource( 10 )
+anims/idle = SubResource( 11 )
+anims/jump = SubResource( 12 )
+anims/run = SubResource( 13 )
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Header" type="Label" parent="Menu"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 98.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 16 )
+text = "char"
+
+[node name="NameBack" type="ColorRect" parent="Menu"]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_left = 119.0
+margin_top = 68.0
+margin_right = 220.0
+margin_bottom = 77.0
+
+[node name="KeyboardBack" type="ColorRect" parent="Menu"]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_left = 114.0
+margin_top = 80.0
+margin_right = 224.0
+margin_bottom = 112.0
+
+[node name="DoneBack" type="ColorRect" parent="Menu"]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_left = 149.0
+margin_top = 115.0
+margin_right = 188.0
+margin_bottom = 124.0
+
+[node name="RandomBack" type="ColorRect" parent="Menu"]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_left = 149.0
+margin_top = 2.0
+margin_right = 188.0
+margin_bottom = 11.0
+
+[node name="ColorPick" type="VBoxContainer" parent="Menu"]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_left = 133.0
+margin_top = 17.0
+margin_right = 199.0
+margin_bottom = 69.0
+custom_constants/separation = 12
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/ColorPick"]
+margin_right = 66.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 0, 2 )
+size_flags_vertical = 4
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/ColorPick"]
+margin_top = 14.0
+margin_right = 66.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 2 )
+size_flags_vertical = 4
+
+[node name="ColorRect4" type="ColorRect" parent="Menu/ColorPick"]
+margin_top = 28.0
+margin_right = 66.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 2 )
+size_flags_vertical = 4
+
+[node name="ColorRect5" type="ColorRect" parent="Menu/ColorPick"]
+margin_top = 42.0
+margin_right = 66.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 2 )
+size_flags_vertical = 4
+
+[node name="Cursors" type="Control" parent="Menu"]
+modulate = Color( 1, 0, 0.301961, 1 )
+script = ExtResource( 14 )
+
+[node name="Arrows" type="Control" parent="Menu/Cursors"]
+margin_left = 133.0
+margin_top = 17.0
+margin_right = 133.0
+margin_bottom = 17.0
+
+[node name="Sprite" type="Sprite" parent="Menu/Cursors/Arrows"]
+position = Vector2( -3, 1 )
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="Menu/Cursors/Arrows"]
+position = Vector2( 69, 1 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="Cursor" type="ColorRect" parent="Menu/Cursors"]
+margin_left = 116.0
+margin_top = 82.0
+margin_right = 123.0
+margin_bottom = 89.0
+
+[node name="Colors" type="VBoxContainer" parent="Menu"]
+margin_left = 130.0
+margin_top = 13.0
+margin_right = 203.0
+margin_bottom = 65.0
+custom_constants/separation = 4
+
+[node name="Hat" type="HBoxContainer" parent="Menu/Colors"]
+margin_right = 73.0
+margin_bottom = 10.0
+alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Colors/Hat"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 15.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0, 0.301961, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/Colors/Hat"]
+margin_left = 19.0
+margin_top = 1.0
+margin_right = 27.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0.639216, 0, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Menu/Colors/Hat"]
+margin_left = 31.0
+margin_right = 41.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0.92549, 0.152941, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Menu/Colors/Hat"]
+margin_left = 45.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0, 0.894118, 0.211765, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Colors/Hat"]
+margin_left = 57.0
+margin_top = 1.0
+margin_right = 65.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.160784, 0.678431, 1, 1 )
+
+[node name="Skin" type="HBoxContainer" parent="Menu/Colors"]
+margin_top = 14.0
+margin_right = 73.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 8, 8 )
+alignment = 1
+
+[node name="ColorRect4" type="ColorRect" parent="Menu/Colors/Skin"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 15.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.494118, 0.145098, 0.32549, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Menu/Colors/Skin"]
+margin_left = 19.0
+margin_top = 1.0
+margin_right = 27.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0, 0.529412, 0.317647, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Colors/Skin"]
+margin_left = 31.0
+margin_right = 41.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.670588, 0.321569, 0.211765, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Colors/Skin"]
+margin_left = 45.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.372549, 0.341176, 0.309804, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/Colors/Skin"]
+margin_left = 57.0
+margin_top = 1.0
+margin_right = 65.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.760784, 0.764706, 0.780392, 1 )
+
+[node name="Suit" type="HBoxContainer" parent="Menu/Colors"]
+margin_top = 28.0
+margin_right = 73.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 8, 8 )
+alignment = 1
+
+[node name="ColorRect4" type="ColorRect" parent="Menu/Colors/Suit"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 15.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0.92549, 0.152941, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Menu/Colors/Suit"]
+margin_left = 19.0
+margin_top = 1.0
+margin_right = 27.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0, 0.894118, 0.211765, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Colors/Suit"]
+margin_left = 31.0
+margin_right = 41.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.160784, 0.678431, 1, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Colors/Suit"]
+margin_left = 45.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.513726, 0.462745, 0.611765, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/Colors/Suit"]
+margin_left = 57.0
+margin_top = 1.0
+margin_right = 65.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0.466667, 0.658824, 1 )
+
+[node name="Eye" type="HBoxContainer" parent="Menu/Colors"]
+margin_top = 42.0
+margin_right = 73.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 8, 8 )
+alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="Menu/Colors/Eye"]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 15.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.760784, 0.764706, 0.780392, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Menu/Colors/Eye"]
+margin_left = 19.0
+margin_top = 1.0
+margin_right = 27.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0.466667, 0.658824, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Menu/Colors/Eye"]
+margin_left = 31.0
+margin_right = 41.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 10, 10 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 1, 0.8, 0.666667, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Menu/Colors/Eye"]
+margin_left = 45.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0.494118, 0.145098, 0.32549, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Menu/Colors/Eye"]
+margin_left = 57.0
+margin_top = 1.0
+margin_right = 65.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color( 0, 0.529412, 0.317647, 1 )
+
+[node name="Labels" type="VBoxContainer" parent="Menu"]
+margin_left = 208.0
+margin_top = 14.0
+margin_right = 281.0
+margin_bottom = 67.0
+custom_constants/separation = 6
+
+[node name="Control" type="Control" parent="Menu/Labels"]
+margin_right = 73.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Sprite" type="Sprite" parent="Menu/Labels/Control"]
+texture = ExtResource( 6 )
+centered = false
+hframes = 4
+
+[node name="Control2" type="Control" parent="Menu/Labels"]
+margin_top = 14.0
+margin_right = 73.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Sprite" type="Sprite" parent="Menu/Labels/Control2"]
+texture = ExtResource( 6 )
+centered = false
+hframes = 4
+frame = 1
+
+[node name="Control3" type="Control" parent="Menu/Labels"]
+margin_top = 28.0
+margin_right = 73.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Sprite" type="Sprite" parent="Menu/Labels/Control3"]
+texture = ExtResource( 6 )
+centered = false
+hframes = 4
+frame = 2
+
+[node name="Control4" type="Control" parent="Menu/Labels"]
+margin_top = 42.0
+margin_right = 73.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 8, 8 )
+
+[node name="Sprite" type="Sprite" parent="Menu/Labels/Control4"]
+texture = ExtResource( 6 )
+centered = false
+hframes = 4
+frame = 3
+
+[node name="Name" type="Label" parent="Menu"]
+margin_left = 120.0
+margin_top = 69.0
+margin_right = 219.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 14 )
+text = "crate_kid"
+align = 1
+
+[node name="Keyboard" type="VBoxContainer" parent="Menu"]
+margin_left = 116.0
+margin_top = 82.0
+margin_right = 222.0
+margin_bottom = 110.0
+custom_constants/separation = 0
+
+[node name="Row1" type="HBoxContainer" parent="Menu/Keyboard"]
+margin_right = 106.0
+margin_bottom = 7.0
+
+[node name="Key" type="Control" parent="Menu/Keyboard/Row1"]
+margin_right = 7.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Key2" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="Key3" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 22.0
+margin_right = 29.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="Key4" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 33.0
+margin_right = 40.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "4"
+align = 1
+valign = 1
+
+[node name="Key5" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 44.0
+margin_right = 51.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Key6" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 55.0
+margin_right = 62.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="Key7" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 66.0
+margin_right = 73.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="Key8" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 77.0
+margin_right = 84.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="Key9" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 88.0
+margin_right = 95.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="Key10" type="Control" parent="Menu/Keyboard/Row1"]
+margin_left = 99.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row1/Key10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Row2" type="HBoxContainer" parent="Menu/Keyboard"]
+margin_top = 7.0
+margin_right = 106.0
+margin_bottom = 14.0
+
+[node name="Key" type="Control" parent="Menu/Keyboard/Row2"]
+margin_right = 7.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "q"
+align = 1
+valign = 1
+
+[node name="Key2" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "w"
+align = 1
+valign = 1
+
+[node name="Key3" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 22.0
+margin_right = 29.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "e"
+align = 1
+valign = 1
+
+[node name="Key4" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 33.0
+margin_right = 40.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "r"
+align = 1
+valign = 1
+
+[node name="Key5" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 44.0
+margin_right = 51.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "t"
+align = 1
+valign = 1
+
+[node name="Key6" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 55.0
+margin_right = 62.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "y"
+align = 1
+valign = 1
+
+[node name="Key7" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 66.0
+margin_right = 73.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "u"
+align = 1
+valign = 1
+
+[node name="Key8" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 77.0
+margin_right = 84.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "i"
+align = 1
+valign = 1
+
+[node name="Key9" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 88.0
+margin_right = 95.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "o"
+align = 1
+valign = 1
+
+[node name="Key10" type="Control" parent="Menu/Keyboard/Row2"]
+margin_left = 99.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row2/Key10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "p"
+align = 1
+valign = 1
+
+[node name="Row3" type="HBoxContainer" parent="Menu/Keyboard"]
+margin_top = 14.0
+margin_right = 106.0
+margin_bottom = 21.0
+
+[node name="Key" type="Control" parent="Menu/Keyboard/Row3"]
+margin_right = 7.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "a"
+align = 1
+valign = 1
+
+[node name="Key2" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "s"
+align = 1
+valign = 1
+
+[node name="Key3" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 22.0
+margin_right = 29.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "d"
+align = 1
+valign = 1
+
+[node name="Key4" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 33.0
+margin_right = 40.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "f"
+align = 1
+valign = 1
+
+[node name="Key5" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 44.0
+margin_right = 51.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "g"
+align = 1
+valign = 1
+
+[node name="Key6" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 55.0
+margin_right = 62.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "h"
+align = 1
+valign = 1
+
+[node name="Key7" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 66.0
+margin_right = 73.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "j"
+align = 1
+valign = 1
+
+[node name="Key8" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 77.0
+margin_right = 84.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "k"
+align = 1
+valign = 1
+
+[node name="Key9" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 88.0
+margin_right = 95.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "l"
+align = 1
+valign = 1
+
+[node name="Key10" type="Control" parent="Menu/Keyboard/Row3"]
+margin_left = 99.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row3/Key10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "."
+align = 1
+valign = 1
+
+[node name="Row4" type="HBoxContainer" parent="Menu/Keyboard"]
+margin_top = 21.0
+margin_right = 106.0
+margin_bottom = 28.0
+
+[node name="Key" type="Control" parent="Menu/Keyboard/Row4"]
+margin_right = 7.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "z"
+align = 1
+valign = 1
+
+[node name="Key2" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 11.0
+margin_right = 18.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "x"
+align = 1
+valign = 1
+
+[node name="Key3" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 22.0
+margin_right = 29.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "c"
+align = 1
+valign = 1
+
+[node name="Key4" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 33.0
+margin_right = 40.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "v"
+align = 1
+valign = 1
+
+[node name="Key5" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 44.0
+margin_right = 51.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "b"
+align = 1
+valign = 1
+
+[node name="Key6" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 55.0
+margin_right = 62.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "n"
+align = 1
+valign = 1
+
+[node name="Key7" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 66.0
+margin_right = 73.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "m"
+align = 1
+valign = 1
+
+[node name="Key8" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 77.0
+margin_right = 84.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = " "
+align = 1
+valign = 1
+
+[node name="Key9" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 88.0
+margin_right = 95.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key9"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "_"
+align = 1
+valign = 1
+
+[node name="Key10" type="Control" parent="Menu/Keyboard/Row4"]
+margin_left = 99.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+
+[node name="Label" type="Label" parent="Menu/Keyboard/Row4/Key10"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 14 )
+text = "-"
+align = 1
+valign = 1
+
+[node name="Done" type="Control" parent="Menu"]
+margin_left = 150.0
+margin_top = 116.0
+margin_right = 187.0
+margin_bottom = 123.0
+
+[node name="Label" type="Label" parent="Menu/Done"]
+margin_left = 1.0
+margin_right = 37.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 14 )
+text = "Accept"
+
+[node name="Random" type="Control" parent="Menu"]
+margin_left = 150.0
+margin_top = 3.0
+margin_right = 187.0
+margin_bottom = 10.0
+
+[node name="Label" type="Label" parent="Menu/Random"]
+margin_left = 1.0
+margin_right = 37.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 14 )
+text = "random"
+align = 1
+
+[editable path="GameCamera"]

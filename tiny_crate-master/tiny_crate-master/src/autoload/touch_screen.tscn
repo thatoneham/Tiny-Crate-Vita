@@ -1,0 +1,265 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://src/autoload/touch_screen.gd" type="Script" id=1]
+[ext_resource path="res://media/image/circle.png" type="Texture" id=2]
+[ext_resource path="res://src/menu/round_button.gd" type="Script" id=3]
+[ext_resource path="res://src/menu/button_modulate.gd" type="Script" id=4]
+[ext_resource path="res://media/font/NicoPaint-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/circle.gd" type="Script" id=8]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 15.0
+
+[sub_resource type="DynamicFont" id=6]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -4
+font_data = ExtResource( 5 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 15.0
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 2.12132, 2.12132, 3, 0, 2.12132, -2.12132, 42.4264, -42.4264, 55.4328, -22.961, 60, 0, 55.4328, 22.961, 42.4264, 42.4264 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( -2.12132, 2.12132, -1.31134e-07, 3, 2.12132, 2.12132, 42.4264, 42.4264, 22.961, 55.4328, -2.62268e-06, 60, -22.961, 55.4328, -42.4264, 42.4264 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( -2.12132, -2.12132, -3, -2.62268e-07, -2.12132, 2.12132, -42.4264, 42.4264, -55.4328, 22.961, -60, -5.24537e-06, -55.4328, -22.961, -42.4264, -42.4264 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 2.12132, -2.12132, 3.57746e-08, -3, -2.12132, -2.12132, -42.4264, -42.4264, -22.961, -55.4328, 7.15493e-07, -60, 22.961, -55.4328, 42.4264, -42.4264 )
+
+[node name="TouchScreen" type="CanvasLayer"]
+pause_mode = 2
+layer = 6
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = -10.0
+margin_bottom = -5.0
+
+[node name="HBoxRight" type="HBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="C" type="CenterContainer" parent="Control/HBoxRight"]
+margin_left = 148.0
+margin_top = 88.0
+margin_right = 178.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 8
+
+[node name="Control" type="Control" parent="Control/HBoxRight/C"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 15.0
+margin_bottom = 15.0
+
+[node name="Button" type="TouchScreenButton" parent="Control/HBoxRight/C/Control"]
+shape = SubResource( 3 )
+shape_centered = false
+action = "ui_no"
+visibility_mode = 1
+
+[node name="Circle" type="Sprite" parent="Control/HBoxRight/C/Control"]
+modulate = Color( 1, 1, 1, 0.156863 )
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+button_path = NodePath("../Button")
+idle_color = Color( 1, 1, 1, 0.156863 )
+
+[node name="Key" type="Label" parent="Control/HBoxRight/C/Control"]
+modulate = Color( 1, 0, 0.301961, 1 )
+margin_left = -11.0
+margin_top = -12.0
+margin_right = 13.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 6 )
+text = "c"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="X" type="CenterContainer" parent="Control/HBoxRight"]
+margin_left = 178.0
+margin_top = 88.0
+margin_right = 208.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 8
+
+[node name="Control" type="Control" parent="Control/HBoxRight/X"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 15.0
+margin_bottom = 15.0
+
+[node name="Button" type="TouchScreenButton" parent="Control/HBoxRight/X/Control"]
+shape = SubResource( 4 )
+shape_centered = false
+action = "ui_yes"
+visibility_mode = 1
+
+[node name="Circle" type="Sprite" parent="Control/HBoxRight/X/Control"]
+modulate = Color( 1, 1, 1, 0.156863 )
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+button_path = NodePath("../Button")
+idle_color = Color( 1, 1, 1, 0.156863 )
+
+[node name="Key" type="Label" parent="Control/HBoxRight/X/Control"]
+modulate = Color( 0, 0.894118, 0.211765, 1 )
+margin_left = -11.0
+margin_top = -12.0
+margin_right = 13.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 6 )
+text = "x"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="HBoxTop" type="HBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="Pause" type="CenterContainer" parent="Control/HBoxTop"]
+margin_left = 178.0
+margin_right = 208.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="Control/HBoxTop/Pause"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 15.0
+margin_bottom = 15.0
+
+[node name="Button" type="TouchScreenButton" parent="Control/HBoxTop/Pause/Control"]
+shape = SubResource( 5 )
+shape_centered = false
+action = "ui_pause"
+visibility_mode = 1
+
+[node name="Circle" type="Sprite" parent="Control/HBoxTop/Pause/Control"]
+modulate = Color( 1, 1, 1, 0.156863 )
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+button_path = NodePath("../Button")
+idle_color = Color( 1, 1, 1, 0.156863 )
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxTop/Pause/Control"]
+margin_left = -5.0
+margin_top = -6.0
+margin_right = -1.0
+margin_bottom = 6.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxTop/Pause/Control"]
+margin_left = 1.0
+margin_top = -6.0
+margin_right = 5.0
+margin_bottom = 6.0
+
+[node name="Joystick" type="Control" parent="Control"]
+margin_left = 26.0
+margin_top = 98.0
+margin_right = 26.0
+margin_bottom = 98.0
+rect_pivot_offset = Vector2( -84, -71 )
+
+[node name="Base" type="Control" parent="Control/Joystick"]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 8 )
+radius = 20.0
+points = 16
+
+[node name="Buttons" type="Control" parent="Control/Joystick"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="0" type="TouchScreenButton" parent="Control/Joystick/Buttons"]
+shape = SubResource( 7 )
+shape_centered = false
+action = "ui_right"
+script = ExtResource( 3 )
+poly_path = NodePath("Polygon2D")
+inner_radius = 18.0
+inner_offset = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control/Joystick/Buttons/0"]
+modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( 2, 0 )
+polygon = PoolVector2Array( 2.12132, 2.12132, 3, 0, 2.12132, -2.12132, 12.7279, -12.7279, 16.6298, -6.8883, 18, 0, 16.6298, 6.8883, 12.7279, 12.7279 )
+script = ExtResource( 4 )
+button_path = NodePath("..")
+idle_color = Color( 1, 1, 1, 0.501961 )
+
+[node name="1" type="TouchScreenButton" parent="Control/Joystick/Buttons"]
+shape = SubResource( 8 )
+shape_centered = false
+action = "ui_down"
+script = ExtResource( 3 )
+angle = 90.0
+poly_path = NodePath("Polygon2D")
+inner_radius = 18.0
+inner_offset = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control/Joystick/Buttons/1"]
+modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( -8.74228e-08, 2 )
+polygon = PoolVector2Array( -2.12132, 2.12132, -1.31134e-07, 3, 2.12132, 2.12132, 12.7279, 12.7279, 6.8883, 16.6298, -7.86805e-07, 18, -6.8883, 16.6298, -12.7279, 12.7279 )
+script = ExtResource( 4 )
+button_path = NodePath("..")
+
+[node name="2" type="TouchScreenButton" parent="Control/Joystick/Buttons"]
+shape = SubResource( 9 )
+shape_centered = false
+action = "ui_left"
+script = ExtResource( 3 )
+angle = 180.0
+poly_path = NodePath("Polygon2D")
+inner_radius = 18.0
+inner_offset = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control/Joystick/Buttons/2"]
+modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( -2, -1.74846e-07 )
+polygon = PoolVector2Array( -2.12132, -2.12132, -3, -2.62268e-07, -2.12132, 2.12132, -12.7279, 12.7279, -16.6298, 6.8883, -18, -1.57361e-06, -16.6298, -6.8883, -12.7279, -12.7279 )
+script = ExtResource( 4 )
+button_path = NodePath("..")
+
+[node name="3" type="TouchScreenButton" parent="Control/Joystick/Buttons"]
+shape = SubResource( 10 )
+shape_centered = false
+action = "ui_up"
+script = ExtResource( 3 )
+angle = 270.0
+poly_path = NodePath("Polygon2D")
+inner_radius = 18.0
+inner_offset = 2.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control/Joystick/Buttons/3"]
+modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( 2.38498e-08, -2 )
+polygon = PoolVector2Array( 2.12132, -2.12132, 3.57746e-08, -3, -2.12132, -2.12132, -12.7279, -12.7279, -6.8883, -16.6298, 2.14648e-07, -18, 6.8883, -16.6298, 12.7279, -12.7279 )
+script = ExtResource( 4 )
+button_path = NodePath("..")

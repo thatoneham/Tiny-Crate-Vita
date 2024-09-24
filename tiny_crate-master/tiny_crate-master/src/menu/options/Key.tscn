@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://media/font/QuinqueFive.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/menu/options/Key.gd" type="Script" id=2]
+[ext_resource path="res://media/image/keymap.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 5
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -1
+extra_spacing_bottom = -1
+font_data = ExtResource( 1 )
+
+[node name="Key" type="Control"]
+margin_right = 7.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 7, 7 )
+size_flags_vertical = 4
+script = ExtResource( 2 )
+action = "jump"
+text = "left"
+
+[node name="Black" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 8.0
+margin_bottom = 8.0
+
+[node name="White" type="ColorRect" parent="."]
+margin_right = 7.0
+margin_bottom = 7.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 2.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1, -1 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 4
+vframes = 8
+frame = 2
