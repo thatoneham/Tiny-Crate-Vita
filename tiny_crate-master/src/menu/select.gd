@@ -200,9 +200,10 @@ func _physics_process(delta):
 				break
 	else:
 		if is_load == false and is_screening == false and can_load_image:
-			if Engine.get_frames_per_second() >= 50:
+			if Engine.get_frames_per_second() >= 45:
 				thread.start(self,"load_images",null)
-				
+			else:
+				yield(get_tree().create_timer(0.5),"timeout")
 func load_images() -> void:
 	# this is the new function i made so th
 	can_load_image = false

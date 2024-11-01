@@ -348,10 +348,6 @@ pointing/emulate_touch_from_mouse=true
 
 limits/multithreaded_server/rid_pool_prealloc=80
 
-[physics]
-
-2d/thread_model=2
-
 [rendering]
 
 quality/driver/driver_name="GLES2"
