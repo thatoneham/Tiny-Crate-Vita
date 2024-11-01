@@ -128,12 +128,17 @@ func menu_select(tag : String = menu_items[cursor].to_lower()):
 			Shared.last_slot = cursor
 			
 			if Shared.save_data[cursor].empty():
+				$Stage/Actors.queue_free()
 				Shared.load_save(cursor)
 				Shared.wipe_scene(Shared.creator_path)
 			else:
 				switch_menu("open")
 			
 		"load":
+			$Stage/Actors.queue_free()
+			$Control/Main.queue_free()
+			$Control/Slot.queue_free()
+			$Credits.queue_free()
 			Shared.wipe_scene(Shared.level_select_path)
 		"erase":
 			switch_menu("erase")

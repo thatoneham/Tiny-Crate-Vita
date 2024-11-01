@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://media/image/creator.png" type="Texture" id=1]
 [ext_resource path="res://media/image/crate_tiles.png" type="Texture" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://media/font/QuinqueFive.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://media/font/m3x6.tres" type="DynamicFont" id=25]
 [ext_resource path="res://src/stage/Stage.gd" type="Script" id=26]
+[ext_resource path="res://media/font/m6x11.tres" type="DynamicFont" id=27]
 
 [sub_resource type="DynamicFont" id=3]
 extra_spacing_top = -3
@@ -814,6 +815,18 @@ text = "Tiny Crate vita"
 align = 2
 autowrap = true
 
+[node name="Version" type="Label" parent="Control"]
+margin_left = 95.0
+margin_top = 103.0
+margin_right = 323.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 228, 0 )
+custom_fonts/font = ExtResource( 27 )
+text = "v1.1.6"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Logo" type="TextureRect" parent="Control"]
 modulate = Color( 0, 0.529412, 0.317647, 1 )
 margin_left = 115.0
@@ -910,23 +923,23 @@ position = Vector2( 44, 29 )
 texture = ExtResource( 4 )
 
 [node name="Header2" type="Label" parent="Credits/Top"]
-margin_left = -11.0
+margin_left = -18.0
 margin_top = 7.0
-margin_right = 58.0
+margin_right = 82.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 21 )
-text = "Tiny Crate"
+text = "Tiny Crate vita"
 align = 1
 
 [node name="List" type="Label" parent="Credits"]
-margin_left = 63.0
-margin_top = 54.0
-margin_right = 224.0
-margin_bottom = 128.0
+margin_left = 64.0
+margin_top = 49.0
+margin_right = 225.0
+margin_bottom = 123.0
 custom_fonts/font = SubResource( 23 )
 text = "hhoney.net
 Made with Godot Engine
-
+ported by Thatoneham
 Fonts: NicoPaint -emhuo
 QuinqueFive -GGBotNet
 Expression Pro -somepx

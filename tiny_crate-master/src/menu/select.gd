@@ -16,7 +16,7 @@ var screen_static := []
 var screen_max := 1
 
 var overlays := []
-
+var _cache := []
 var is_input := true
 var input_count := 0
 var input_wait := 3
@@ -38,6 +38,9 @@ var is_load := false
 var is_screening := false
 var map_limit := 0
 var screen_list := []
+var screen_image_node := []
+var screen_image_name := []
+var can_load_image := true
 export var timeout_mod := 1.0
 
 var screen_time := 0.0
@@ -54,21 +57,27 @@ export(String, MULTILINE) var lock_string := ""
 var map_vector = {}
 var is_faster = false
 var is_faster_note = false
-
+var done_loading_cache = false
 var blink_label
-
 export var blink_on := 0.3
 export var blink_off := 0.2
 var blink_clock := 0.0
 var blink_count = 10
-
+#i made this messy since i was lazy on making it a nice system
+var cache_ := []
+var thread := Thread.new()
 func _ready():
+	if GlobalCache.loaded_cache == false:
+		#$_cache.connect("load_select_images",self,"can_load_images_func")
+		pass
+	else:
+		pass
 	Leaderboard.connect("new_score", self, "new_score")
 	SilentWolf.Scores.connect("sw_scores_received", self, "new_score")
 	
 	is_faster_note = Shared.is_faster_note
 	is_faster = is_faster_note or Shared.is_faster
-	print("is_faster: ", is_faster, ", is_faster_note: ", is_faster_note)
+	#print("is_faster: ", is_faster, ", is_faster_note: ", is_faster_note)
 #	if is_faster:
 #		Audio.play("menu_bell", 0.8, 1.2)
 	
@@ -82,8 +91,8 @@ func _ready():
 			map_list.append(x)
 			if c - 1 < Shared.count_gems:
 				map_unlocked.append(x)
-	print("map_lock: ", map_lock)
-	print("map_rows: ", map_rows)
+	#print("map_lock: ", map_lock)
+	#print("map_rows: ", map_rows)
 	
 	screen.rect_position -= Vector2.ONE * 500
 	
@@ -108,7 +117,6 @@ func _ready():
 	is_screening = true
 	
 	show_scoreboard()
-
 func sort_list(a, b):
 	if abs(a - cursor) < abs(b - cursor):
 		return true
@@ -132,7 +140,7 @@ func _input(event):
 			Audio.play("menu_random", 0.8, 1.2)
 	elif event.is_action_pressed("ui_pause"):
 		show_score = posmod(show_score + 1, 3)
-		print("show_score: ", show_score)
+		#print("show_score: ", show_score)
 		show_scoreboard()
 		Audio.play("menu_options", 0.7, 1.3)
 	else:
@@ -175,7 +183,6 @@ func _physics_process(delta):
 				is_load = true
 				print(screen_time, " screeening time")
 				break
-	
 	# load stages
 	elif is_load:
 		loading_time += delta
@@ -184,12 +191,39 @@ func _physics_process(delta):
 			if load_list.size() > 0:
 				var pop = load_list.pop_front()
 				pop[2].add_child(Shared.scene_dict[pop[1]].instance())
-				screen_static[pop[0]].visible = false
+				print("TEST ETST ETST")
+				print(Shared.scene_dict[pop[1]])
+				#screen_static[pop[0]].visible = false
 			else:
 				is_load = false
 				print(loading_time, " loading time")
 				break
-
+	else:
+		if is_load == false and is_screening == false and can_load_image:
+			if Engine.get_frames_per_second() >= 50:
+				thread.start(self,"load_images",null)
+				
+func load_images() -> void:
+	# this is the new function i made so th
+	can_load_image = false
+	print(screen_image_name)
+	var image_count = 0
+	var image_array_count = 0
+	for i in range(map_list.size()):
+		if Wipe.is_wipe:
+			break
+		image_count += 1
+		if image_count > 8:
+			cache_.clear()
+			for j in range(8):
+				if Wipe.is_wipe:
+					break
+				cache_.push_back(load("res://media/image/Screens/" + screen_image_name[j] + ".png"))
+			image_array_count += 8
+			image_count = 0
+		if i < screen_image_node.size():
+			var new = screen_image_node[i]
+			new.get_node("Vis/Panel/Image").texture = load("res://media/image/Screens/" + screen_image_name[i] + ".png")
 func make_screen(i := 0):
 	var new = screen.duplicate()
 	var map_name = map_list[i]
@@ -226,14 +260,16 @@ func make_screen(i := 0):
 	
 	if is_faster and i == Shared.map_select:
 		blink_label = note_label if is_faster_note else gem_label
-		print("faster ", i, ", blink_label ", blink_label)
+		#print("faster ", i, ", blink_label ", blink_label)
 		Audio.play("menu_bell", 0.5, 1.0)
-	
+	screen_image_node.append(new)
+	screen_image_name.append(map_list[i])
 	screens_node.add_child(new)
 	overlays[i] = new.get_node("Overlay")
-	new.get_node("Vis/Panel/Image").texture = load("res://media/image/Screens/" + map_list[i] + ".png")
+	#new.get_node("Vis/Panel/Image").texture = load("res://media/image/Screens/" + map_list[i] + ".png")
 	new.get_node("Vis/Panel/Image").scale = Vector2(0.28,0.28)
 	new.get_node("Vis/Panel/Image").position += Vector2(68,48)
+	yield(get_tree(),"idle_frame")
 # view a scene inside the viewport by path
 func view_scene(port, path, arg):
 	for i in port.get_children():
@@ -277,7 +313,7 @@ func refresh_score(var map_name : String = current_map):
 	
 	if !last_refresh.has(map_name) or last_refresh[map_name] == 0:
 		Leaderboard.refresh_score(map_name)
-		print(map_name, " FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH ")
+		#print(map_name, " FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH FRESH ")
 		last_refresh[map_name] = refresh_wait
 
 func new_score(arg1 = null, arg2 = null, arg3 = null):

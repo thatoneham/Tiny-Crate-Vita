@@ -1,0 +1,247 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://media/image/crate_tiles.png" type="Texture" id=1]
+[ext_resource path="res://src/stage/Stage.gd" type="Script" id=2]
+[ext_resource path="res://media/image/8pixel.png" type="Texture" id=3]
+[ext_resource path="res://media/image/solid_bricks.png" type="Texture" id=4]
+[ext_resource path="res://media/image/bricks.png" type="Texture" id=5]
+[ext_resource path="res://src/stage/ObscureMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/stage/SpikeTileMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/stage/GameCamera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/actor/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/actor/Exit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/actor/Box.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/actor/Note.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/stage/DetailTileMap.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/actor/Switch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/actor/SwitchBlock.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/actor/SwitchBlockBlue.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/actor/SwitchBlue.tscn" type="PackedScene" id=18]
+
+[sub_resource type="TileSet" id=1]
+0/name = "solid_bricks.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 0.4, 0.741176, 0.415686, 1 )
+0/region = Rect2( 0, 0, 16, 8 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 8, 8 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "8pixel.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 0, 1, 0.33 )
+1/region = Rect2( 0, 0, 8, 8 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=2]
+4/name = "bricks.png 4"
+4/texture = ExtResource( 5 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 0.12549, 0.188235, 0.129412, 1 )
+4/region = Rect2( 0, 0, 40, 8 )
+4/tile_mode = 2
+4/autotile/icon_coordinate = Vector2( 0, 0 )
+4/autotile/tile_size = Vector2( 8, 8 )
+4/autotile/spacing = 0
+4/autotile/occluder_map = [  ]
+4/autotile/navpoly_map = [  ]
+4/autotile/priority_map = [  ]
+4/autotile/z_index_map = [  ]
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "crate_tiles.png 5"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 0.0392157, 0.411765, 0.941176, 1 )
+5/region = Rect2( 0, 16, 24, 8 )
+5/tile_mode = 2
+5/autotile/icon_coordinate = Vector2( 0, 0 )
+5/autotile/tile_size = Vector2( 8, 8 )
+5/autotile/spacing = 0
+5/autotile/occluder_map = [  ]
+5/autotile/navpoly_map = [  ]
+5/autotile/priority_map = [  ]
+5/autotile/z_index_map = [  ]
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "crate_tiles.png 6"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 0.658824, 0.176471, 0.176471, 1 )
+6/region = Rect2( 0, 24, 8, 8 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+
+[sub_resource type="TileSet" id=3]
+0/name = "8pixel.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 0, 1, 0, 0.14902 )
+0/region = Rect2( 0, 0, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+2/name = "solid_bricks.png 2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 0.4, 0.741176, 0.415686, 1 )
+2/region = Rect2( 0, 0, 32, 8 )
+2/tile_mode = 2
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 8, 8 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[node name="Stage" type="Node2D"]
+script = ExtResource( 2 )
+palette = 4
+color_solid = Color( 0.4, 0.741176, 0.415686, 1 )
+color_back = Color( 0.12549, 0.188235, 0.129412, 1 )
+color_grass = Color( 0.0392157, 0.411765, 0.941176, 1 )
+color_wood = Color( 0.658824, 0.176471, 0.176471, 1 )
+
+[node name="SolidTileMap" parent="." instance=ExtResource( 14 )]
+tile_set = SubResource( 1 )
+tile_data = PoolIntArray( -1245190, 0, 0, -1245189, 0, 0, -1245188, 0, 0, -1245187, 0, 0, -1245186, 0, 0, -1245185, 0, 0, -1310720, 0, 0, -1310719, 0, 0, -1310718, 0, 0, -1310717, 0, 0, -1310716, 0, 0, -1310715, 0, 0, -1310714, 0, 0, -1310713, 0, 0, -1310712, 0, 0, -1310711, 0, 0, -1310710, 0, 0, -1310709, 0, 0, -1310708, 0, 0, -1179654, 0, 0, -1245172, 0, 0, -1114118, 0, 0, -1179636, 0, 0, -1048586, 0, 0, -1048585, 0, 0, -1048584, 0, 0, -1048583, 0, 0, -1048582, 0, 0, -1048580, 0, 0, -1048579, 0, 0, -1048578, 0, 0, -1048577, 0, 0, -1114112, 0, 0, -1114111, 536870912, 1, -1114110, 0, 0, -1114109, 0, 0, -1114108, 0, 0, -1114100, 0, 0, -1114099, 0, 0, -1114098, 0, 0, -1114097, 0, 0, -1114096, 0, 0, -1114095, 0, 0, -1114094, 0, 0, -1114093, 0, 0, -1114092, 0, 0, -1114091, 0, 0, -1114090, 0, 0, -1114089, 0, 0, -1114088, 0, 0, -983050, 0, 0, -983044, 536870912, 0, -1048571, 0, 0, -1048564, 0, 0, -1048558, 0, 0, -1048552, 0, 0, -917514, 0, 0, -917510, 536870912, 1, -917509, 536870912, 1, -917508, 536870912, 0, -983035, 0, 0, -983028, 0, 0, -983022, 0, 0, -983016, 0, 0, -851978, 0, 0, -851974, 0, 0, -917499, 0, 0, -917492, 0, 0, -917486, 0, 0, -917480, 0, 0, -786442, 0, 0, -851963, 0, 0, -851962, 0, 0, -851961, 0, 0, -851960, 0, 0, -851959, 0, 0, -851958, 0, 0, -851957, 0, 0, -851956, 0, 0, -851949, 0, 0, -851944, 0, 0, -720906, 0, 0, -786413, 0, 0, -786412, 0, 0, -786411, 0, 0, -786410, 0, 0, -786409, 0, 0, -655370, 0, 0, -655369, 536870912, 1, -655368, 0, 0, -655367, 0, 0, -655366, 0, 0, -655365, 0, 0, -655364, 0, 0, -655363, 536870912, 1, -655362, 0, 0, -655361, 0, 0, -720874, 0, 0, -720873, 0, 0, -589834, 0, 0, -655338, 0, 0, -655337, 0, 0, -524298, 0, 0, -589818, 0, 0, -589817, 536870912, 1, -589816, 0, 0, -589815, 0, 0, -589814, 0, 0, -589813, 0, 0, -589812, 0, 0, -589811, 0, 0, -589810, 0, 0, -589809, 0, 0, -589802, 0, 0, -589801, 0, 0, -458762, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 0, 0, -524280, 0, 0, -524279, 0, 0, -524278, 0, 0, -524277, 0, 0, -524276, 0, 0, -524275, 0, 0, -524274, 0, 0, -524273, 0, 0, -524272, 0, 0, -524266, 0, 0, -524265, 0, 0, -393226, 536870912, 1, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458740, 0, 0, -458739, 0, 0, -458738, 0, 0, -458737, 0, 1, -458736, 0, 0, -458735, 0, 0, -458734, 0, 0, -458733, 0, 0, -458730, 0, 0, -458729, 0, 0, -327690, 0, 0, -393213, 0, 0, -393212, 0, 0, -393208, 0, 0, -393207, 0, 0, -393203, 0, 0, -393197, 0, 0, -393196, 0, 0, -393194, 0, 0, -393193, 0, 0, -262154, 0, 0, -327677, 0, 0, -327672, 0, 0, -327671, 0, 0, -327658, 0, 0, -327657, 0, 0, -196618, 0, 0, -262136, 0, 0, -262135, 0, 0, -262122, 0, 0, -262121, 0, 0, -131082, 0, 0, -131073, 0, 0, -196600, 0, 0, -196599, 0, 0, -196586, 0, 0, -196585, 0, 0, -65546, 0, 0, -65537, 0, 1, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131051, 0, 0, -131050, 0, 0, -131049, 0, 0, -10, 0, 0, -1, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 1, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 536870912, 1, 4, 536870912, 1, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 1, 14, 0, 0, 15, 536870912, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0 )
+tile_color = Color( 0.4, 0.741176, 0.415686, 1 )
+
+[node name="SpikeTileMap" parent="." instance=ExtResource( 7 )]
+tile_data = PoolIntArray( -9, 0, 0, -8, 536870912, 0, -7, 536870912, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0 )
+
+[node name="DetailTileMap" parent="." instance=ExtResource( 13 )]
+z_index = -11
+tile_set = SubResource( 2 )
+tile_data = PoolIntArray( -1114111, 5, 0, -983044, 1073741828, 0, -983043, 1073741828, 0, -983042, 1073741830, 0, -1048574, 4, 2, -1048573, 4, 1, -1048572, 4, 1, -1048570, 1073741828, 0, -1048568, 1073741828, 0, -1048567, 1073741828, 0, -1048566, 1073741828, 0, -1048565, 1073741828, 0, -1048563, 1073741828, 3, -1048561, 6, 0, -1048560, 4, 0, -1048559, 4, 0, -1048556, 5, 0, -1048555, 5, 0, -1048554, 5, 0, -917510, 1073741828, 0, -917509, 1073741828, 0, -917508, 1073741828, 0, -917507, 1073741828, 0, -917506, 5, 0, -983037, 4, 2, -983036, 6, 0, -983034, 1073741828, 0, -983032, 1073741828, 3, -983031, 1073741828, 2, -983030, 1073741828, 0, -983029, 1073741828, 0, -983025, 6, 0, -983024, 4, 4, -983023, 4, 0, -983020, 5, 0, -983019, 5, 0, -983018, 5, 0, -851974, 1073741828, 0, -851973, 1073741828, 3, -851972, 1073741828, 2, -851971, 1073741828, 0, -917500, 6, 0, -917498, 1073741828, 0, -917497, 1073741828, 0, -917496, 1073741828, 0, -917495, 1073741828, 0, -917494, 1073741828, 0, -917493, 1073741828, 0, -917491, 5, 0, -917490, 5, 0, -917489, 5, 0, -917487, 4, 2, -917485, 5, 2, -917483, 6, 0, -786437, 1073741828, 0, -786436, 1073741828, 0, -786435, 1073741828, 0, -851965, -1610612731, 0, -851964, 6, 0, -851955, 5, 0, -851954, 5, 0, -851953, 5, 0, -851952, 5, 0, -851951, 5, 0, -851947, 6, 0, -720901, 1073741828, 0, -720900, 1073741828, 0, -786430, -1610612731, 0, -786429, -1610612731, 0, -786428, -1610612731, 0, -786427, -1610612731, 0, -786425, 4, 0, -786423, 4, 0, -786422, 4, 0, -786419, 5, 0, -786418, 5, 0, -786417, 5, 0, -786416, 5, 0, -786415, 5, 0, -720896, -1610612730, 0, -720895, -1610612730, 0, -720894, -1610612731, 0, -720893, -1610612731, 0, -720892, -1610612731, 0, -720891, -1610612731, 0, -720889, 4, 0, -720888, 4, 0, -720887, 4, 1, -720886, 4, 0, -720885, 4, 0, -720881, 5, 0, -720880, 5, 0, -720877, 4, 0, -720876, 4, 3, -720875, 4, 2, -589833, 4, 0, -589832, 4, 0, -589830, 6, 0, -589826, 536870917, 1, -655358, -1610612731, 0, -655357, -1610612731, 0, -655356, -1610612731, 0, -655355, 6, 0, -655352, 4, 0, -655351, 4, 3, -655350, 4, 2, -655349, 4, 1, -655341, 4, 2, -655340, 4, 0, -655339, 4, 0, -524297, 4, 0, -524296, 536870916, 2, -524295, 5, 0, -524294, 5, 0, -524293, 5, 0, -524290, 536870917, 1, -589821, -1610612731, 0, -589820, -1610612731, 0, -589819, 6, 0, -589804, 4, 2, -589803, 4, 0, -458761, 536870916, 2, -458759, 5, 0, -458758, 5, 0, -458757, 5, 0, -458754, 536870917, 1, -524285, 536870917, 2, -524269, 5, 2, -524267, 4, 0, -393222, 5, 1, -458741, 6, 0, -458731, 4, 2, -327686, 5, 1, -393211, 6, 0, -393206, 5, 0, -393205, 5, 0, -393204, 5, 0, -393202, 4, 0, -393201, 4, 1, -393200, 4, 1, -393199, 4, 0, -393198, 4, 0, -327675, 6, 0, -327670, 5, 0, -327669, 5, 0, -327668, 5, 0, -327667, 5, 1, -327665, 4, 2, -327664, 4, 0, -327663, 536870916, 2, -327661, 6, 0, -262137, 1073741828, 0, -262133, 5, 0, -262132, 5, 0, -262125, 6, 0, -196602, 1073741828, 0, -196601, 1073741828, 0, -196593, 536870916, 3, -196592, 536870916, 0, -196591, 536870916, 0, -196590, 536870916, 0, -131067, 1073741828, 0, -131066, 1073741828, 0, -131065, 1073741828, 0, -131058, 4, 0, -131057, 4, 0, -131056, 4, 3, -131055, 4, 2, -131054, 4, 0, -131053, 4, 0, -65532, 1073741828, 0, -65531, 1073741828, 0, -65530, 1073741828, 0, -65529, 1073741828, 0, -65523, 4, 0, -65522, 4, 0, -65521, 4, 0, -65520, 4, 0, -65519, 4, 0, -65518, 4, 0, -65517, 4, 0, 22, 1610612740, 1, 23, 1610612740, 1 )
+brick_color = Color( 0.12549, 0.188235, 0.129412, 1 )
+grass_color = Color( 0.0392157, 0.411765, 0.941176, 1 )
+wood_color = Color( 0.658824, 0.176471, 0.176471, 1 )
+
+[node name="ObscureMap" parent="." instance=ExtResource( 6 )]
+tile_set = SubResource( 3 )
+tile_data = PoolIntArray( -1179653, 0, 0, -1179652, 0, 0, -1179651, 0, 0, -1179650, 0, 0, -1179649, 0, 0, -1245184, 0, 0, -1245183, 0, 0, -1245182, 0, 0, -1245181, 0, 0, -1245180, 0, 0, -1245179, 0, 0, -1245178, 0, 0, -1245177, 0, 0, -1245176, 0, 0, -1245175, 0, 0, -1245174, 0, 0, -1245173, 0, 0, -1114117, 0, 0, -1114116, 0, 0, -1114115, 0, 0, -1114114, 0, 0, -1114113, 0, 0, -1179648, 0, 0, -1179647, 0, 0, -1179646, 0, 0, -1179645, 0, 0, -1179644, 0, 0, -1179643, 0, 0, -1179642, 0, 0, -1179641, 0, 0, -1179640, 0, 0, -1179639, 0, 0, -1179638, 0, 0, -1179637, 0, 0, -1048581, 2, 1, -1114107, 536870912, 0, -1114106, 2, 0, -1114105, 2, 0, -1114104, 2, 0, -1114103, 2, 0, -1114102, 2, 0, -1114101, 2, 0, -1048570, 2, 0, -1048569, 2, 1, -1048568, 2, 3, -1048567, 2, 1, -1048566, 2, 0, -1048565, 2, 0, -983034, 2, 0, -983033, 2, 0, -983032, 2, 0, -983031, 2, 0, -983030, 2, 1, -983029, 2, 2, -917498, 2, 0, -917497, 2, 2, -917496, 2, 0, -917495, 2, 0, -917494, 2, 1, -917493, 2, 1 )
+tile_color = Color( 0.4, 0.741176, 0.415686, 1 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 8 )]
+position = Vector2( 36, -57 )
+bounds = Rect2( 0, 0, 40, 0 )
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="Player" parent="Actors" instance=ExtResource( 9 )]
+position = Vector2( -38, -24 )
+
+[node name="Exit" parent="Actors" instance=ExtResource( 10 )]
+position = Vector2( -66, -106 )
+
+[node name="Box" parent="Actors" instance=ExtResource( 11 )]
+position = Vector2( -64, -16 )
+
+[node name="Box2" parent="Actors" instance=ExtResource( 11 )]
+position = Vector2( 56, -36 )
+
+[node name="Note" parent="Actors" instance=ExtResource( 12 )]
+position = Vector2( 66, -117 )
+
+[node name="SwitchBlock" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -8, -32 )
+
+[node name="SwitchBlock2" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -8, -96 )
+inverted = true
+
+[node name="Switch" parent="Actors" instance=ExtResource( 15 )]
+position = Vector2( -64, -4 )
+
+[node name="SwitchBlock3" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -8, -104 )
+inverted = true
+
+[node name="SwitchBlockBlue" parent="Actors" instance=ExtResource( 17 )]
+position = Vector2( -48, -104 )
+inverted = true
+
+[node name="SwitchBlockBlue2" parent="Actors" instance=ExtResource( 17 )]
+position = Vector2( -48, -96 )
+inverted = true
+
+[node name="SwitchBlock4" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( 0, -89 )
+
+[node name="SwitchBlue" parent="Actors" instance=ExtResource( 18 )]
+position = Vector2( 56, -4 )
+
+[node name="SwitchBlock5" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -8, -40 )
+inverted = true
+
+[node name="SwitchBlock6" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( 0, -40 )
+inverted = true
+
+[node name="SwitchBlock7" parent="Actors" instance=ExtResource( 16 )]
+position = Vector2( -16, -40 )
+inverted = true
+
+[node name="Box3" parent="Actors" instance=ExtResource( 11 )]
+position = Vector2( 80, -24 )
+
+[editable path="GameCamera"]

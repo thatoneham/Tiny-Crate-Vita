@@ -5,7 +5,7 @@ class_name SwitchBlock
 export var color := "red"
 export var frame_on := 10
 export var frame_off := 8
-
+export (bool) var inverted := false
 onready var node_sprite : Sprite = $Sprite
 
 var is_switch = false
@@ -14,8 +14,13 @@ func _ready():
 	if Engine.editor_hint: return
 	
 	for i in get_tree().get_nodes_in_group("switch_" + color):
-		i.connect("press", self, "switch_on")
-		i.connect("release", self, "switch_off")
+		if not inverted:
+			i.connect("press", self, "switch_on")
+			i.connect("release", self, "switch_off")
+		else:
+			i.connect("release", self, "switch_on")
+			i.connect("press", self, "switch_off")
+			switch_on()
 		break
 
 func _physics_process(delta):

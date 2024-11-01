@@ -32,7 +32,7 @@ onready var node_audio_pickup : AudioStreamPlayer2D = $AudioPickup
 onready var node_audio_drop : AudioStreamPlayer2D = $AudioDrop
 onready var node_audio_throw : AudioStreamPlayer2D = $AudioThrow
 onready var node_audio_push : AudioStreamPlayer2D = $AudioPush
-
+onready var node_spike_collision : Area2D = $SpikeCollision
 var is_push = false
 var push_clock = 0.0
 var push_fade = 0.0
@@ -116,6 +116,11 @@ func _physics_process(delta):
 		print(name + " hit spike")
 		death()
 		return
+	if node_spike_collision.get_overlapping_bodies().size() > 0:
+		if speed.y > -1 and "SpikeTileMap" in node_spike_collision.get_overlapping_bodies()[0].name:
+			print(name + " hit spike")
+			death()
+			return
 	
 	# anim
 	if is_on_floor:
@@ -289,3 +294,8 @@ func anim_frame():
 	
 	if f == clamp(f, 0, node_sprite.vframes - 1):
 		node_sprite.frame_coords.y = f
+
+
+func _on_SpikeCollision_body_entered(body):
+	if body.tag == "spike":
+		pass

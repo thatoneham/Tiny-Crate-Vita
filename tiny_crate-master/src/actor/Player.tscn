@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/actor/Player.gd" type="Script" id=1]
 [ext_resource path="res://media/audio/sfx/player_jump.wav" type="AudioStream" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://media/audio/sfx/box_drop.wav" type="AudioStream" id=6]
 [ext_resource path="res://media/audio/sfx/push.wav" type="AudioStream" id=7]
 [ext_resource path="res://src/shader/player_palette_swap.gdshader" type="Shader" id=8]
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 2, 3 )
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 8 )
@@ -151,6 +154,14 @@ move_speed = 0.9
 jump_speed = 1.4
 jump_frames = 16
 
+[node name="SpikeCollision" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeCollision"]
+position = Vector2( 4, 4 )
+shape = SubResource( 10 )
+
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 9 )
 position = Vector2( 4, 0 )
@@ -186,3 +197,5 @@ bus = "SFX"
 [node name="AudioPush" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 bus = "SFX"
+
+[connection signal="body_entered" from="SpikeCollision" to="." method="_on_SpikeCollision_body_entered"]
